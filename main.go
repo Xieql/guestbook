@@ -18,6 +18,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"os"
 
 	// Import all Kubernetes client auth plugins (e.g. Azure, GCP, OIDC, etc.)
@@ -89,6 +90,8 @@ func main() {
 		setupLog.Error(err, "unable to start manager")
 		os.Exit(1)
 	}
+
+	fmt.Printf("~~~~mgr = %s ", mgr)
 
 	if err = (&controllers.GuestbookReconciler{
 		Client: mgr.GetClient(),
